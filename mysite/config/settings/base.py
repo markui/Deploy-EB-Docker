@@ -27,26 +27,13 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
 
 # Media Paths
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 MEDIA_URL = '/media/'
 
 # Config Paths
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
 config_secret = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
-
-# AWS
-AWS_ACCESS_KEY_ID = config_secret['aws']['access_key_id']
-AWS_SECRET_ACCESS_KEY = config_secret['aws']['secret_access_key']
-AWS_STORAGE_BUCKET_NAME = config_secret['aws']['s3_bucket_name']
-
-# AWS Storage
-STATICFILES_LOCATION = 'static'
-MEDIAFILES_LOCATION = 'media'
-
-# S3 FileStorage
-DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
-STATICFILES_STORAGE = 'config.storages.StaticStorage'
 
 # Auth
 AUTH_USER_MODEL = 'member.User'
@@ -67,7 +54,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Others
 WSGI_APPLICATION = 'config.wsgi.application'
-DATABASES = config_secret['django']['databases']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

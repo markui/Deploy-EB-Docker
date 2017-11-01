@@ -1,3 +1,5 @@
+import random
+import string
 from .base import *
 
 ALLOWED_HOSTS = [
@@ -11,3 +13,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+SECRET_KEY = ''.join(
+    [random.choice(string.ascii_lowercase) for i in range(40)])
