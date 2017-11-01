@@ -18,4 +18,4 @@ DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
 STATICFILES_STORAGE = 'config.storages.StaticStorage'
 
 # Databases
-DATABASES = config_secret['databases']
+DATABASES = config_secret['django']['databases']
