@@ -1,4 +1,4 @@
-FROM        base
+FROM        viking617/base
 MAINTAINER  viking617617@gmail.com
 
 ENV         LANG C.UTF-8
