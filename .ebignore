@@ -1,10 +1,10 @@
-# .ebignore
-!.config_secret
-
 # Custom
 .idea/
 .static_root/
-.config_secret/
+
+
+# .ebignore
+!.config_secret
 
 # Created by https://www.gitignore.io/api/linux,macos,python,django,pycharm
 
