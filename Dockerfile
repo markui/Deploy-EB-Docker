@@ -22,6 +22,13 @@ RUN         ln -sf /etc/nginx/sites-available/app.conf \
 # uWSGI
 RUN         mkdir -p /var/log/uwsgi/app
 
+
+# manage.py
+WORKDIR     /srv/app/mysite
+RUN         /root/.pyenv/versions/app/bin/python manage.py collectstatic --noinput
+RUN         /root/.pyenv/versions/app/bin/python manage.py migrate --noinput
+
+
 # supervisor
 RUN         cp /srv/app/.config/supervisor/* \
                 /etc/supervisor/conf.d/
