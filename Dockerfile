@@ -40,6 +40,7 @@ FROM        viking617/base
 MAINTAINER  viking617617@gmail.com
 
 ENV         LANG C.UTF-8
+ENV         DJANGO_SETTINGS_MODULE config.settings.dev
 
 # 파일 복사 및 requirements 설치
 COPY        . /srv/app
@@ -50,8 +51,8 @@ WORKDIR     /srv/app
 RUN         pyenv local app
 
 # Nginx
-RUN         cp /srv/app/.config/nginx/nginx.conf /etc/nginx/nginx.conf
-RUN         cp /srv/app/.config/nginx/app.conf \
+RUN         cp /srv/app/.config/dev/nginx/nginx.conf /etc/nginx/nginx.conf
+RUN         cp /srv/app/.config/dev/nginx/app.conf \
                 /etc/nginx/sites-available
 RUN         rm -rf /etc/nginx/sites-enabled/*
 RUN         ln -sf /etc/nginx/sites-available/app.conf \
@@ -68,7 +69,7 @@ RUN         /root/.pyenv/versions/app/bin/python manage.py migrate --noinput
 
 
 # supervisor
-RUN         cp /srv/app/.config/supervisor/* \
+RUN         cp /srv/app/.config/dev/supervisor/* \
                 /etc/supervisor/conf.d/
 CMD         supervisord -n
 
